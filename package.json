@@ -1,0 +1,23 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Node.JS and MySql based store interface",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jppeters16/Bamazon.git"
+  },
+  "author": "John Peters",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jppeters16/Bamazon/issues"
+  },
+  "homepage": "https://github.com/jppeters16/Bamazon#readme",
+  "dependencies": {
+    "inquirer": "^6.2.2",
+    "mysql": "^2.16.0"
+  }
+}
