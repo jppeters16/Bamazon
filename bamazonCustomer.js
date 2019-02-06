@@ -15,14 +15,16 @@ connection.connect(function(err) {
   runSearch();
 });
 
+//Select all products
 function runSearch() {
   connection.query("SELECT * FROM products", function(err, res) {
     if (err) throw err;
-    buyPrompt(res);
+    shoppingCart(res);
   });
 }
 
-function buyPrompt(res) {
+//prompt user to input desired product and quantity
+function shoppingCart(res) {
   inquirer
     .prompt([
       {
@@ -43,6 +45,7 @@ function buyPrompt(res) {
     });
 }
 
+//check quantity of product in database
 function stockQuantity(id, quantity) {
   connection.query(
     "SELECT stock_quantity, price FROM products WHERE id = " + id,
@@ -53,6 +56,7 @@ function stockQuantity(id, quantity) {
   );
 }
 
+//if sufficient quantity, then accept user request and update remaining quantity, else prompt user to edit their request.
 function purchase(quantityRemaining, quantityRequest, price, id) {
   if (quantityRemaining < quantityRequest) {
     inquirer
@@ -82,6 +86,8 @@ function purchase(quantityRemaining, quantityRequest, price, id) {
           item_id: id
         }
       ],
+      //alert user of the balance for their current request, if they want to make additional purchases 
+      //then price and quantity is added to the "total" variable.
       function(err, res) {
         if (err) throw err;
 
